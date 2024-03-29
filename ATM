@@ -1,0 +1,20 @@
+//Check it out
+// npx saeef32-atm
+import inquirer from 'inquirer'
+const pin = await inquirer.prompt({ message: "Enter your PIN:", type: "number", name: "pass" })
+let bal: number = 10000
+const myPin = 3233
+if (pin.pass === myPin) {
+    console.log(`Correct PIN code`);
+    const wel = await inquirer.prompt({ message: "welcome user", name: "user", type: "list", choices: [`Withdraw`, `Check balance`] })
+    console.log(wel);
+    if (wel.user === "Check balance") {
+        console.log(`You're current balance is: ${bal}`)
+    } else {
+        const Withdraw = await inquirer.prompt({ name: 'draw', type: 'number' })
+        console.log(`You're remaining balance is:${bal - Withdraw.draw} `)
+    }
+
+} else {
+    console.log(`Incorrect PIN try agian`)
+}
