@@ -9,10 +9,14 @@ if (pin.pass === myPin) {
     const wel = await inquirer.prompt({ message: "welcome user", name: "user", type: "list", choices: [`Withdraw`, `Check balance`] })
     console.log(wel);
     if (wel.user === "Check balance") {
-        console.log(`You're current balance is: ${bal}`)
+        console.log(`You're current balance is: ${bal}`);
     } else {
         const Withdraw = await inquirer.prompt({ name: 'draw', type: 'number' })
-        console.log(`You're remaining balance is:${bal - Withdraw.draw} `)
+        if (Withdraw.draw<bal) {
+            console.log(`You're remaining balance is:${bal - Withdraw.draw} `)            
+        } else {
+            console.log(`Invalid balance`)
+        }
     }
 
 } else {
